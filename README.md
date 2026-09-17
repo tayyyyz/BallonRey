@@ -1,19 +1,34 @@
-# React + Vite
+# Lineup Builder for B144 & 215
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This app was made in order to build your favorite lineup for your favorite team in the upcoming season.
 
-Currently, two official plugins are available:
+## How to make it work
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
+## Features
+- 9 real-life teams: Real Madrid, Barcelona, Atlético de Madrid (LaLiga), Manchester City,
+  Manchester United, Liverpool (Premier League), AC Milan, Inter, Juventus (Serie A).
+- Squads featuring signings from the 2026 summer transfer window and EA FC 27-style ratings.
+- 5 formations: 4-3-3, 4-4-2, 4-2-3-1, 3-5-2, 3-4-3.
+- Drag and drop players onto the pitch to swap positions (with
+  FIFA-style animation: flash + burst of balls).
+- Drag players from the bench to make substitutions.
+- ‘Download image’ button to export your line-up as a PNG and share it.
 
-## React Compiler
+## Structure
+```
+src/
+  data/players.js       -> templates and ratings
+  data/formations.js    -> coordinates for each formation
+  utils/lineupUtils.js  -> logic for assembling the default starting XI
+  components/           -> Pitch, PlayerToken, BenchList, Controls, SwapBurst, PitchLines
+  App.jsx               -> global state, drag & drop, export to image
+```
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Notes on the data
+Squad lists and transfers are based on publicly available information from the
+2026 summer transfer window (Fabrizio Romano, OneFootball, sports press) as at 25 August 2026.
+The ratings are editorial estimates in the style of EA FC, not official EA data.
