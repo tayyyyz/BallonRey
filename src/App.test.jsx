@@ -7,7 +7,7 @@ import { TEAM_MAP } from './data/players';
 import { FORMATIONS } from './data/formations';
 import { buildDefaultLineup, teamRating } from './utils/lineupUtils';
 
-describe('System Test Suite - BallonRey Lineup Builder', () => {
+describe('System Test Suite - BallonRey', () => {
 
   describe('Unit Testing: Data & Logic Models', () => {
     it('TC-01 / US-01: Validates that TEAM_MAP initializes valid team data', () => {
@@ -53,7 +53,7 @@ describe('System Test Suite - BallonRey Lineup Builder', () => {
     it('TC-06 / US-03: Renders header title and bench toggle button', () => {
       render(<App />);
       
-      const title = screen.getByText(/BallonRey/i);
+      const title = screen.getByRole('heading', { name: /BallonRey/i });
       expect(title).toBeDefined();
 
       const benchBtn = screen.getByRole('button', { name: /bench/i });
